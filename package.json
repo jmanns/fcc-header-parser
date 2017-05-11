@@ -4,11 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jason Manns",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "express-fingerprint": "^1.1.1"
   }
 }
