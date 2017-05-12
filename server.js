@@ -1,8 +1,8 @@
 const express = require('express')
 const fingerprint = require('express-fingerprint')
+const requestIp = require('request-ip')
 
 const app = express()
-
 const port = process.env.PORT || 3000
 
 app.use(fingerprint({
@@ -11,10 +11,12 @@ app.use(fingerprint({
   ]
 }))
 
+app.use(requestIp.mw())
+
 app.get('/api/whoami', (req, res) => {
 
   const os = req.fingerprint.components.useragent.os.family
-  const ip = req.ip
+  const ip = req.clientIp
   const lang = req.headers['accept-language'].split(',')[0]
   res.json({
     ip,
